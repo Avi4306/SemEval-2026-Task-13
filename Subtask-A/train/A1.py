@@ -86,7 +86,7 @@ y_val_pred = (y_val_probs >= 0.5).astype(int)
 print("\n--- Validation Classification Report (Threshold 0.5) ---")
 print(classification_report(y_val, y_val_pred))
 
-final_test = pd.read_parquet("test.parquet")
+final_test = pd.read_parquet("Task_A/test.parquet")
 final_test_feats = pd.DataFrame([extract_robust_features(c) for c in tqdm(final_test['code'], desc="Final Test Extraction")])
 
 for col in cols_to_norm:
