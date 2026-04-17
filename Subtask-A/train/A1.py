@@ -34,7 +34,7 @@ def extract_robust_features(code):
     }
 
 train = pd.read_parquet("Task_A/train.parquet")
-val = pd.read_parquet("Task_A/val.parquet")
+val = pd.read_parquet("Task_A/validation.parquet")
 
 tqdm.pandas(desc="Extracting Train Features")
 train_feats = train['code'].progress_apply(extract_robust_features).apply(pd.Series)
