@@ -22,7 +22,7 @@ python train/B1.py \
     --model_name modernbert-large \
     --model_path answerdotai/ModernBERT-large \
     --max_length 512 \
-    --num_epochs 5 \
+    --num_epochs 4 \
     --batch_size 16 \
     --gradient_accumulation_steps 4 \
     --learning_rate 5e-5 \

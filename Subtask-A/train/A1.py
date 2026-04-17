@@ -33,8 +33,8 @@ def extract_robust_features(code):
         'single_line_comment_ratio': single_line_comments / max(1, comment_lines) if comment_lines > 0 else 0
     }
 
-train = pd.read_parquet("train.parquet")
-val = pd.read_parquet("val.parquet")
+train = pd.read_parquet("Task_A/train.parquet")
+val = pd.read_parquet("Task_A/val.parquet")
 
 tqdm.pandas(desc="Extracting Train Features")
 train_feats = train['code'].progress_apply(extract_robust_features).apply(pd.Series)

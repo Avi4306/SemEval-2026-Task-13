@@ -20,9 +20,9 @@ mkdir -p logs predictions models
 export PYTHONPATH=.
 python train/A3_embed.py \
     --model_name_or_path answerdotai/modernbert-large \
-    --train_path data/train.parquet \
-    --test_path data/test.parquet \
-    --test_sample_path data/test_sample.parquet \
+    --train_path Task_A/train.parquet \
+    --test_path Task_A/test.parquet \
+    --test_sample_path Task_A/test_sample.parquet \
     --output_dir ./embeddings/modernbert-large \
     --batch_size 64 \
     --max_length 512 \

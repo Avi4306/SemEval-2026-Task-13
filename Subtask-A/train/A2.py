@@ -63,9 +63,9 @@ class ModernBERTMeanPoolingExtractor:
 
         return pooled.squeeze(0).cpu().numpy()
 
-train = pd.read_parquet("data/train.parquet")
-val = pd.read_parquet("data/validation.parquet")
-test = pd.read_parquet("data/test.parquet")
+train = pd.read_parquet("Task_A/train.parquet")
+val = pd.read_parquet("Task_A/validation.parquet")
+test = pd.read_parquet("Task_A/test.parquet")
 
 train_feats = train["code"].progress_apply(extract_robust_features).apply(pd.Series)
 val_feats = val["code"].progress_apply(extract_robust_features).apply(pd.Series)
