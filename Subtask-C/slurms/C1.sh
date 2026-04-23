@@ -19,18 +19,20 @@ mkdir -p logs predictions models
 # Use the environment's python
 export PYTHONPATH=.
 python train/C1.py \
+    --model_name modernbert-large \
     --model_path answerdotai/ModernBERT-large \
+    --train_size 900000 \
+    --val_size 200000 \
     --max_length 512 \
     --num_epochs 3 \
-    --batch_size 64 \
+    --batch_size 32 \
     --learning_rate 5e-5 \
     --weight_decay 0.001 \
     --warmup_ratio 0.1 \
-    --gradient_accumulation_steps 2 \
     --bf16  \
-    --gradient_checkpointing \
+    --tf32 \
     --output_dir ./models/modernbert-large \
-    --logging_steps 500 \
+    --logging_steps 1000 \
     --do_train \
     --do_eval \
     --do_predict \

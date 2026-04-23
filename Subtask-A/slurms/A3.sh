@@ -21,10 +21,8 @@ export PYTHONPATH=.
 python train/A3.py \
     --train_embeddings ./embeddings/modernbert-large/train_embeddings.npy \
     --test_embeddings ./embeddings/modernbert-large/test_embeddings.npy \
-    --train_parquet ./data/train.parquet \
+    --train_parquet ./Task_A/train.parquet \
     --test_ids ./embeddings/modernbert-large/test_ids.npy \
-    --test_sample_embeddings ./embeddings/modernbert-large/test_sample_embeddings.npy \
-    --test_sample_parquet ./data/test_sample.parquet \
     --output_dir new_predictions \
 
 echo "Job finished at $(date)"

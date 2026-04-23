@@ -117,6 +117,12 @@ def load_data(args):
     test_sample_df = pd.read_parquet("Task_C/test_sample.parquet")
     test_df = pd.read_parquet("Task_C/test.parquet")
 
+    if args.train_size < len(train_df):
+        train_df = train_df.sample(args.train_size, random_state=42)
+
+    if args.val_size < len(val_df):
+        val_df = val_df.sample(args.val_size, random_state=42)
+
     return train_df, val_df, test_sample_df, test_df
 
 
@@ -130,7 +136,6 @@ def create_model_and_tokenizer(args):
         num_labels=4,
         trust_remote_code=True,
         problem_type="single_label_classification",
-        torch_dtype=torch.bfloat16,
     )
 
     return model, tokenizer
@@ -169,6 +174,7 @@ def setup_training_args(args):
 def main():
     parser = argparse.ArgumentParser()
 
+    parser.add_argument("--model_name", required=False, default="model")
     parser.add_argument("--model_path", required=True)
     parser.add_argument("--output_dir", required=True)
     parser.add_argument("--max_length", type=int, default=512)
@@ -178,6 +184,8 @@ def main():
     parser.add_argument("--weight_decay", type=float, default=0.01)
     parser.add_argument("--warmup_ratio", type=float, default=0.1)
     parser.add_argument("--gradient_accumulation_steps", type=int, default=1)
+    parser.add_argument("--train_size", type=int, default=100000)
+    parser.add_argument("--val_size", type=int, default=20000)
 
     parser.add_argument("--fp16", action="store_true")
     parser.add_argument("--bf16", action="store_true")

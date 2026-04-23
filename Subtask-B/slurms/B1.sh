@@ -16,14 +16,18 @@ cd "$(dirname "$0")/.."
 # Ensure necessary directories exist
 mkdir -p logs predictions models
 
+# after 1 epoch change num_epochs to 4 and batch size to 64
+
 # Run training using the active environment's python
 export PYTHONPATH=.
 python train/B1.py \
     --model_name modernbert-large \
     --model_path answerdotai/ModernBERT-large \
+    --train_size 500000 \
+    --val_size 10000 \
     --max_length 512 \
-    --num_epochs 4 \
-    --batch_size 16 \
+    --num_epochs 1 \
+    --batch_size 32 \
     --gradient_accumulation_steps 4 \
     --learning_rate 5e-5 \
     --weight_decay 0.001 \
