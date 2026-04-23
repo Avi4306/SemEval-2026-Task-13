@@ -24,6 +24,5 @@ python train/C2_stacking.py \
     --output_dir ./ensemble_results \
     --train \
     --predict \
-    --submission_name stacking_submission.csv
 
 echo "Job finished at $(date)"

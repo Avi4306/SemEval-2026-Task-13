@@ -119,7 +119,7 @@ def main(args):
     print(f"Mean Train Prob: {model.predict_proba(X_train_scaled)[:, 1].mean():.4f}")
     print(f"Mean Test Prob:  {probs.mean():.4f}")
 
-    submission = pd.DataFrame({"ID": test_ids, "prediction": preds})
+    submission = pd.DataFrame({"ID": test_ids, "label": preds})
     out_path = f"{args.output_dir}/adv_surgical_drop.csv"
     submission.to_csv(out_path, index=False)
     print(f"✅ Saved to {out_path}")
