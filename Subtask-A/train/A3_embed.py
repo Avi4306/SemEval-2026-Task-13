@@ -9,9 +9,7 @@ from transformers import AutoTokenizer, AutoModel
 from tqdm import tqdm
 import sys
 
-# =========================
-# DATASET CLASS
-# =========================
+
 class TaskADataset(Dataset):
     def __init__(self, codes, tokenizer, max_length=512):
         self.codes = codes
@@ -35,9 +33,6 @@ class TaskADataset(Dataset):
             "attention_mask": enc["attention_mask"].squeeze(0),
         }
 
-# =========================
-# EMBEDDING EXTRACTION
-# =========================
 @torch.no_grad()
 def extract_embeddings(model, loader, desc, use_pooling=True):
     model.eval()
@@ -59,9 +54,6 @@ def extract_embeddings(model, loader, desc, use_pooling=True):
 
     return np.vstack(embs)
 
-# =========================
-# MAIN
-# =========================
 def main(args):
     print("🚀 Starting Pre-trained Embedding Extraction", flush=True)
     os.makedirs(args.output_dir, exist_ok=True)

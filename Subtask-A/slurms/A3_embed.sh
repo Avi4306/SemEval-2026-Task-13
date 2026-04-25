@@ -19,11 +19,11 @@ mkdir -p logs predictions models
 # Run training using the active environment's python
 export PYTHONPATH=.
 python train/A3_embed.py \
-    --model_name_or_path answerdotai/modernbert-large \
+    --model_name_or_path ./models/unixcoder-base-nine-embed \
     --train_path Task_A/train.parquet \
     --test_path Task_A/test.parquet \
     --test_sample_path Task_A/test_sample.parquet \
-    --output_dir ./embeddings/modernbert-large \
+    --output_dir ./embeddings/unixcoder-base-nine-embed \
     --batch_size 64 \
     --max_length 512 \
     --use_pooling
